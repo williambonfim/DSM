@@ -59,14 +59,17 @@ Elements, GlobalFrame = structure.analysis(printGeometry=True)
 # ================ PRINT RESULTS ================
 # Print all data
 # Local elements data
-for element in Elements:
-    element.printData()
+print_results = True
 
-# Global elements data
-GlobalFrame.printData()
+if print_results:
+    for element in Elements:
+        element.printData()
 
-print('Elements reactions g_local (Internal Reactions):')
-print('\nCompression 1\nShear 1\nMoment 1\nCompression 2\nShear 2\nMoment 2')
-for element in Elements:
-       print()
-       print(element.gl)
+    # Global elements data
+    GlobalFrame.printData()
+
+    print('Elements reactions g_local (Internal Reactions):')
+    print('\nCompression 1\nShear 1\nMoment 1\nCompression 2\nShear 2\nMoment 2')
+    for element in Elements:
+        print()
+        print(element.gl)

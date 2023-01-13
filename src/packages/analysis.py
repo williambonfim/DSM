@@ -18,7 +18,7 @@ class StructuralAnalysis():
         self.Fq = Fq
 
 
-    def analysis(self, printGeometry=True):
+    def analysis(self, printGeometry=True, Magnification=100000):
         
         # Initialize all individual framed elements
         Elements = []
@@ -59,7 +59,10 @@ class StructuralAnalysis():
         # Draw the 2D geometry
         if printGeometry:
             analysisType = 'Plane Frame'
+
             if analysisType == 'Plane Frame':
+                
+                # Plot the initial structure
                 xpoints = []
                 ypoints = []
                 for elm in Elements:
@@ -68,9 +71,18 @@ class StructuralAnalysis():
                     ypoints.append(elm.CoordNo1[1])
                     ypoints.append(elm.CoordNo2[1])
 
-                plt.plot(xpoints, ypoints, marker='o')
-                plt.xlabel('meters')
-                plt.ylabel('meters')
-                plt.show()
+                plt.plot(xpoints, ypoints, 'o-.', linewidth=1)
+                plt.title("Initial Structure")
+                plt.xlabel("x-coordinates (m)")
+                plt.ylabel("y-coordinates (m)")
+                
+                # Plot the deformed structure
+                Nel = len(self.Elm)
 
+                x_def, y_def = GlobalFrame.deformed_geometry(xpoints, ypoints, self.Elm, Magnification)
+                
+                plt.plot(x_def, y_def, c='r', linewidth=1)
+
+                plt.show()
+                
         return Elements, GlobalFrame
