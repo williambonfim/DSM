@@ -1,4 +1,4 @@
-from packages import StructuralAnalysis
+from util import StructuralAnalysis
 
 
 # ================ INPUT PARAMETERS ================

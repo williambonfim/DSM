@@ -1,7 +1,7 @@
 import numpy as np
 from math import sqrt
-from packages.stiffness_matrices import Stiffness_matrix
-from packages.load_vectors import Load_vector
+from util.stiffness_matrices import Stiffness_matrix
+from util.load_vectors import Load_vector
 
 
 
